@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+Most important rule.
+
+Project Name
+- vibe-coding
+
+Purpose
+- Learning to Vibe Coding
+
+How
+- don't write my own code. I just give instructions.
+- Create a directory for each project.
+- Leave written prompts.
+
+Use
+- TypeScript
+- React/nextjs
+- pnpm
