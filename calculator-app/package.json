@@ -12,7 +12,8 @@
     "test:coverage": "jest --coverage",
     "test:unit": "jest src/__tests__",
     "test:integration": "jest tests/integration/calculator-component-fixed.test.tsx",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test tests/e2e/calculator-simple.spec.ts",
+    "test:e2e-full": "playwright test",
     "test:e2e-ui": "playwright test --ui",
     "test:all": "npm run test:unit && npm run test:integration && npm run test:e2e"
   },
