@@ -3,84 +3,43 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { 
+  type CalculatorState, 
+  type Operation,
+  initialState,
+  inputNumber as inputNumberLogic,
+  inputOperation as inputOperationLogic,
+  performCalculation as performCalculationLogic,
+  clearAll as clearAllLogic,
+  clearEntry as clearEntryLogic,
+  inputDecimal as inputDecimalLogic
+} from "@/lib/calculator";
 
 export function Calculator() {
-  const [display, setDisplay] = useState("0");
-  const [previousValue, setPreviousValue] = useState<number | null>(null);
-  const [operation, setOperation] = useState<string | null>(null);
-  const [waitingForOperand, setWaitingForOperand] = useState(false);
+  const [state, setState] = useState<CalculatorState>(initialState);
 
   const inputNumber = (num: string) => {
-    if (waitingForOperand) {
-      setDisplay(num);
-      setWaitingForOperand(false);
-    } else {
-      setDisplay(display === "0" ? num : display + num);
-    }
+    setState(prevState => inputNumberLogic(prevState, num));
   };
 
-  const inputOperation = (nextOperation: string) => {
-    const inputValue = parseFloat(display);
-
-    if (previousValue === null) {
-      setPreviousValue(inputValue);
-    } else if (operation) {
-      const currentValue = previousValue || 0;
-      const newValue = calculate(currentValue, inputValue, operation);
-
-      setDisplay(String(newValue));
-      setPreviousValue(newValue);
-    }
-
-    setWaitingForOperand(true);
-    setOperation(nextOperation);
-  };
-
-  const calculate = (firstValue: number, secondValue: number, operation: string): number => {
-    switch (operation) {
-      case "+":
-        return firstValue + secondValue;
-      case "-":
-        return firstValue - secondValue;
-      case "×":
-        return firstValue * secondValue;
-      case "÷":
-        return firstValue / secondValue;
-      default:
-        return secondValue;
-    }
+  const inputOperation = (nextOperation: Operation) => {
+    setState(prevState => inputOperationLogic(prevState, nextOperation));
   };
 
   const performCalculation = () => {
-    const inputValue = parseFloat(display);
-
-    if (previousValue !== null && operation) {
-      const newValue = calculate(previousValue, inputValue, operation);
-      setDisplay(String(newValue));
-      setPreviousValue(null);
-      setOperation(null);
-      setWaitingForOperand(true);
-    }
+    setState(prevState => performCalculationLogic(prevState));
   };
 
   const clearAll = () => {
-    setDisplay("0");
-    setPreviousValue(null);
-    setOperation(null);
-    setWaitingForOperand(false);
+    setState(clearAllLogic());
   };
 
   const clearEntry = () => {
-    setDisplay("0");
+    setState(prevState => clearEntryLogic(prevState));
   };
 
   const inputDecimal = () => {
-    if (waitingForOperand) {
-      setDisplay("0.");
-      setWaitingForOperand(false);
-    } else if (display.indexOf(".") === -1) {
-      setDisplay(display + ".");
-    }
+    setState(prevState => inputDecimalLogic(prevState));
   };
 
   const CalculatorButton = ({ 
@@ -112,8 +71,11 @@ export function Calculator() {
       <CardContent className="space-y-4">
         {/* ディスプレイ */}
         <div className="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg">
-          <div className="text-right text-3xl font-mono font-bold overflow-hidden">
-            {display}
+          <div 
+            className="text-right text-3xl font-mono font-bold overflow-hidden"
+            data-testid="calculator-display"
+          >
+            {state.display}
           </div>
         </div>
 
