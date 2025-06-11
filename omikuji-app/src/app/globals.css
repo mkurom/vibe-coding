@@ -1,0 +1,418 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  /* Material Design 3 - Light Theme */
+  --md-sys-color-primary: 103 80% 40%;
+  --md-sys-color-on-primary: 0 0% 100%;
+  --md-sys-color-primary-container: 103 100% 88%;
+  --md-sys-color-on-primary-container: 103 100% 12%;
+  
+  --md-sys-color-secondary: 285 43% 49%;
+  --md-sys-color-on-secondary: 0 0% 100%;
+  --md-sys-color-secondary-container: 285 100% 92%;
+  --md-sys-color-on-secondary-container: 285 100% 15%;
+  
+  --md-sys-color-tertiary: 24 100% 50%;
+  --md-sys-color-on-tertiary: 0 0% 100%;
+  --md-sys-color-tertiary-container: 24 100% 90%;
+  --md-sys-color-on-tertiary-container: 24 100% 15%;
+  
+  --md-sys-color-surface: 0 0% 98%;
+  --md-sys-color-on-surface: 0 0% 10%;
+  --md-sys-color-surface-variant: 285 15% 90%;
+  --md-sys-color-on-surface-variant: 285 15% 30%;
+  
+  --md-sys-color-background: 0 0% 99%;
+  --md-sys-color-on-background: 0 0% 10%;
+  
+  --md-sys-color-error: 0 84% 60%;
+  --md-sys-color-on-error: 0 0% 100%;
+  --md-sys-color-error-container: 0 100% 95%;
+  --md-sys-color-on-error-container: 0 84% 20%;
+  
+  --md-sys-color-outline: 285 15% 50%;
+  --md-sys-color-outline-variant: 285 15% 80%;
+  
+  --md-sys-color-shadow: 0 0% 0%;
+  --md-sys-color-scrim: 0 0% 0%;
+  
+  /* Shadcn UI compatible mapping */
+  --background: var(--md-sys-color-background);
+  --foreground: var(--md-sys-color-on-background);
+  --card: var(--md-sys-color-surface);
+  --card-foreground: var(--md-sys-color-on-surface);
+  --popover: var(--md-sys-color-surface);
+  --popover-foreground: var(--md-sys-color-on-surface);
+  --primary: var(--md-sys-color-primary);
+  --primary-foreground: var(--md-sys-color-on-primary);
+  --secondary: var(--md-sys-color-secondary);
+  --secondary-foreground: var(--md-sys-color-on-secondary);
+  --muted: var(--md-sys-color-surface-variant);
+  --muted-foreground: var(--md-sys-color-on-surface-variant);
+  --accent: var(--md-sys-color-tertiary);
+  --accent-foreground: var(--md-sys-color-on-tertiary);
+  --destructive: var(--md-sys-color-error);
+  --destructive-foreground: var(--md-sys-color-on-error);
+  --border: var(--md-sys-color-outline-variant);
+  --input: var(--md-sys-color-surface-variant);
+  --ring: var(--md-sys-color-primary);
+  --radius: 1rem; /* Material Design 3 uses larger radius */
+}
+
+.dark {
+  /* Material Design 3 - Dark Theme */
+  --md-sys-color-primary: 103 100% 80%;
+  --md-sys-color-on-primary: 103 100% 20%;
+  --md-sys-color-primary-container: 103 80% 30%;
+  --md-sys-color-on-primary-container: 103 100% 88%;
+  
+  --md-sys-color-secondary: 285 43% 80%;
+  --md-sys-color-on-secondary: 285 43% 20%;
+  --md-sys-color-secondary-container: 285 43% 30%;
+  --md-sys-color-on-secondary-container: 285 100% 92%;
+  
+  --md-sys-color-tertiary: 24 100% 80%;
+  --md-sys-color-on-tertiary: 24 100% 20%;
+  --md-sys-color-tertiary-container: 24 100% 30%;
+  --md-sys-color-on-tertiary-container: 24 100% 90%;
+  
+  --md-sys-color-surface: 0 0% 6%;
+  --md-sys-color-on-surface: 0 0% 90%;
+  --md-sys-color-surface-variant: 285 15% 20%;
+  --md-sys-color-on-surface-variant: 285 15% 80%;
+  
+  --md-sys-color-background: 0 0% 4%;
+  --md-sys-color-on-background: 0 0% 90%;
+  
+  --md-sys-color-error: 0 84% 80%;
+  --md-sys-color-on-error: 0 84% 20%;
+  --md-sys-color-error-container: 0 84% 30%;
+  --md-sys-color-on-error-container: 0 100% 95%;
+  
+  --md-sys-color-outline: 285 15% 60%;
+  --md-sys-color-outline-variant: 285 15% 30%;
+  
+  --md-sys-color-shadow: 0 0% 0%;
+  --md-sys-color-scrim: 0 0% 0%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  font-feature-settings: "rlig" 1, "calt" 1;
+  /* Material Design 3 Typography */
+  font-family: var(--font-roboto), 'Roboto', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Material Design 3 Components */
+.md3-surface {
+  background: hsl(var(--md-sys-color-surface));
+  color: hsl(var(--md-sys-color-on-surface));
+  border-radius: 1.5rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.md3-surface-variant {
+  background: hsl(var(--md-sys-color-surface-variant));
+  color: hsl(var(--md-sys-color-on-surface-variant));
+  border-radius: 1.5rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.md3-primary-container {
+  background: hsl(var(--md-sys-color-primary-container));
+  color: hsl(var(--md-sys-color-on-primary-container));
+  border-radius: 1.5rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.md3-secondary-container {
+  background: hsl(var(--md-sys-color-secondary-container));
+  color: hsl(var(--md-sys-color-on-secondary-container));
+  border-radius: 1.5rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.md3-tertiary-container {
+  background: hsl(var(--md-sys-color-tertiary-container));
+  color: hsl(var(--md-sys-color-on-tertiary-container));
+  border-radius: 1.5rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Material Design 3 Buttons */
+.md3-button-filled {
+  background: hsl(var(--md-sys-color-primary));
+  color: hsl(var(--md-sys-color-on-primary));
+  border-radius: 1.25rem;
+  padding: 0.625rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.md3-button-filled:hover {
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.md3-button-outlined {
+  background: transparent;
+  color: hsl(var(--md-sys-color-primary));
+  border: 1px solid hsl(var(--md-sys-color-outline));
+  border-radius: 1.25rem;
+  padding: 0.625rem 1.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.0125rem;
+  transition: all 0.2s ease;
+}
+
+.md3-button-outlined:hover {
+  background: hsl(var(--md-sys-color-primary) / 0.08);
+}
+
+/* Material Design 3 Cards */
+.md3-card-elevated {
+  background: hsl(var(--md-sys-color-surface));
+  color: hsl(var(--md-sys-color-on-surface));
+  border-radius: 0.75rem;
+  box-shadow: 
+    0px 1px 3px 0px rgba(0, 0, 0, 0.3),
+    0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.md3-card-elevated:hover {
+  box-shadow: 
+    0px 2px 3px 0px rgba(0, 0, 0, 0.3),
+    0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.md3-card-filled {
+  background: hsl(var(--md-sys-color-surface-variant));
+  color: hsl(var(--md-sys-color-on-surface-variant));
+  border-radius: 0.75rem;
+  border: none;
+}
+
+/* Material Design 3 Typography */
+.md3-display-large {
+  font-size: 3.5rem;
+  line-height: 4rem;
+  font-weight: 400;
+  letter-spacing: -0.015625rem;
+}
+
+.md3-display-medium {
+  font-size: 2.8125rem;
+  line-height: 3.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-display-small {
+  font-size: 2.25rem;
+  line-height: 2.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-headline-large {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-headline-medium {
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-headline-small {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-title-large {
+  font-size: 1.375rem;
+  line-height: 1.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.md3-title-medium {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.009375rem;
+}
+
+.md3-title-small {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.00625rem;
+}
+
+.md3-body-large {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.03125rem;
+}
+
+.md3-body-medium {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.015625rem;
+}
+
+.md3-body-small {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.025rem;
+}
+
+.md3-label-large {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.00625rem;
+}
+
+.md3-label-medium {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.03125rem;
+}
+
+.md3-label-small {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.03125rem;
+}
+
+/* Omikuji specific Material Design 3 styles */
+.omikuji-container {
+  background: hsl(var(--md-sys-color-primary-container));
+  color: hsl(var(--md-sys-color-on-primary-container));
+  border-radius: 2rem;
+  padding: 2rem;
+  box-shadow: 
+    0px 1px 3px 0px rgba(0, 0, 0, 0.3),
+    0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.omikuji-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0px 2px 3px 0px rgba(0, 0, 0, 0.3),
+    0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+}
+
+.fortune-level-badge {
+  background: hsl(var(--md-sys-color-tertiary));
+  color: hsl(var(--md-sys-color-on-tertiary));
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.00625rem;
+  box-shadow: 
+    0px 1px 2px 0px rgba(0, 0, 0, 0.3),
+    0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+/* Material Design 3 elevation states */
+@keyframes md3-ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.md3-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.md3-ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.md3-ripple:active::before {
+  width: 300px;
+  height: 300px;
+  opacity: 0.2;
+}
+
+/* 和風のカスタムスタイル */
+.japanese-bg {
+  background: linear-gradient(135deg, #fffaf0 0%, #fdf5e6 100%);
+}
+
+.fortune-card {
+  background: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.omikuji-box {
+  background: linear-gradient(145deg, #dc2626 0%, #b91c1c 100%);
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
+}
+
+.lucky-color {
+  background: linear-gradient(45deg, var(--color) 0%, color-mix(in srgb, var(--color) 80%, white) 100%);
+} 
